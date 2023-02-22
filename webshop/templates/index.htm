@@ -1,0 +1,125 @@
+{% extends 'base.htm' %}
+
+{% block title %}
+<title>Online Shop</title>
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Pricing</h1>
+  <p class="lead">Cloud file storage and additional tools for developers and entrepreneurs from GGY. High quality service and fast execution will not leave you indifferent.</p>
+</div>
+
+<main>
+  <div class="container">
+  <div class="card-deck mb-3 text-center">
+  {% for el in data %}
+  <div class="card mb-4 shadow-sm">
+      {% if el.price < 400 %} 
+      <div class="card-header"> 
+        <h4 class="my-0 font-weight-normal" >{{ el.title }}</h4>
+      </div>
+      {% endif %}
+      {% if el.price >= 400 and el.price < 800 %}
+      <div class="card-header" style="background-color: rgb(99, 178, 243);"> 
+        <h4 class="my-0 font-weight-normal" style="color:#ffffff;">{{ el.title }}</h4>
+      </div>
+      {% endif %}
+      {% if el.price >= 800 %}
+      <div class="card-header" style="background-color: rgb(62, 162, 255);"> 
+        <h4 class="my-0 font-weight-normal" style="color:#ffffff">{{ el.title }}</h4>
+      </div>
+      {% endif %}
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">${{ el.price }}.00<small class="text-muted">/year</small></h1> 
+        {% if  el.price < 400 %} 
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>2 users included</li>
+          <li>500 GB of storage</li>
+          <li>Email support</li>
+        </ul>
+        <br>
+        <a href="/buy/{{ el.id }}" class="btn btn-lg btn-block btn-outline-primary">Buy</a>
+        {% endif %}
+        {% if  el.price >= 400 and el.price < 800 %} 
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Unlimited users</li>
+          <li>1 TB of storage</li>
+          <li>Email support</li>
+          <li>Help center access</li>
+        </ul>
+        <a href="/buy/{{ el.id }}" class="btn btn-lg btn-block btn-outline-primary">Buy</a>
+        {% endif %}
+        {% if  el.price >= 800 %} 
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Unlimited users</li>
+          <li>2 TB of storage</li>
+          <li>Email support</li>
+          <li>Help center access</li>
+        </ul>
+        <a href="/buy/{{ el.id }}" class="btn btn-lg btn-block btn-outline-primary">Buy</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  <br>
+<main>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <h2 class="display-6 text-center mb-4">Compare plans</h2>
+  
+  <div class="table-responsive">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th style="width: 34%;"></th>
+          <th style="width: 22%;">Minimal</th>
+          <th style="width: 22%;">Standart</th>
+          <th style="width: 22%;">Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Public</th>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Private</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+      </tbody>
+
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Permissions</th>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Sharing</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Unlimited members</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Extra security</th>
+          <td></td>
+          <td></td>
+          <td><svg class="bi" width="24" height="24"><use xlink:href="#check"><i class="fa fa-check"></i></use></svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}
